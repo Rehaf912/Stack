@@ -1,3 +1,4 @@
+
 package model;
 /**
  * <p>
@@ -116,7 +117,22 @@ public class Stack<ContentType> {
         if(!isEmpty()){
             this.head = head.getNext();
         }
+    public void push(ContentType pContent) {
+    if (pContent == null) {
+        return;
     }
+
+    StackNode newNode = new StackNode(pContent);
+    newNode.setNext(head);
+    head = newNode;
+}
+
+public ContentType top() {
+    if (isEmpty()) {
+        return null;
+    }
+    return head.getContent();
+}
 
     /**
      * Die Anfrage liefert das oberste Stapelobjekt. Der Stapel bleibt
