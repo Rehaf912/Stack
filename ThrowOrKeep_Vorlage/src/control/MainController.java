@@ -26,7 +26,13 @@ public class MainController {
      */
     public void startProgram() {
         //TODO 08: Implementiere die Methode gemäß des Kommentars
-        Stack<Card> stackOrigin = new Stack<>();
+        stackOrigin = new Stack<>();
+        stackKeep = new Stack<>();
+
+        for (int i = 0; i < 10; i++) {
+            int zufallswert = (int) (Math.random() * 21);
+            stackOrigin.push(new Card(zufallswert));
+        }
     }
 
     /**
@@ -35,6 +41,9 @@ public class MainController {
      */
     public int showNextCard() {
         //TODO 09: Implementiere die Methode gemäß des Kommentars
+        if(!cardStackEmpty()) {
+            return stackOrigin.top().getWert();
+        }
         return -1;
     }
 
@@ -44,6 +53,11 @@ public class MainController {
      */
     public boolean keep() {
         //TODO 10: Implementiere die Methode gemäß des Kommentars
+        if(!cardStackEmpty()){
+            stackKeep.push(stackOrigin.top());
+            stackOrigin.pop();
+            return true;
+        }
         return false;
     }
 
@@ -53,6 +67,10 @@ public class MainController {
      */
     public boolean throwCard() {
         //TODO 11: Implementiere die Methode gemäß des Kommentars
+        if(!cardStackEmpty()){
+            stackOrigin.pop();
+            return true;
+        }
         return false;
     }
 
@@ -63,7 +81,24 @@ public class MainController {
      */
     public int inspect() {
         //TODO 12: Implementiere die Methode gemäß des Kommentars
-        return -1;
+        if(!keepCorrect()) return -1;
+
+        //Stack<Card> help = new Stack<>();
+        int count = 0;
+        while(!stackKeep.isEmpty()) {
+            //help.push(stackKeep.top());
+            stackKeep.pop();
+            /*stackKeep.pop
+            count++; Wenn man keinen Help Stack braucht kann man das auch einfach nur poppen und die anzahl davon sichern
+             */
+            count++;
+        }
+
+        /*while(!help.isEmpty()){
+            stackKeep.push(help.top());
+            help.pop();
+        }*/
+        return count;
     }
 
     /**
@@ -94,3 +129,4 @@ public class MainController {
     }
 
 }
+
