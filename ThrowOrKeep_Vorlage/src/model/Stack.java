@@ -102,8 +102,8 @@ public class Stack<ContentType> {
         if(pContent == null) return;
         StackNode newNode = new StackNode(pContent);
         if(!isEmpty()){
-            this.head = newNode;
             this.head.setNext(newNode);
+            this.head = newNode;
         }
     }
 
@@ -117,15 +117,6 @@ public class Stack<ContentType> {
         if(!isEmpty()){
             this.head = head.getNext();
         }
-    public void push(ContentType pContent) {
-    if (pContent == null) {
-        return;
-    }
-
-    StackNode newNode = new StackNode(pContent);
-    newNode.setNext(head);
-    head = newNode;
-}
 
 public ContentType top() {
     if (isEmpty()) {
