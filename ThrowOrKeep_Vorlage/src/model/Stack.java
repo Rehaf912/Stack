@@ -113,17 +113,11 @@ public class Stack<ContentType> {
      */
     public void pop() {
         //TODO 06: Implementiere die Methode pop(). Achtung! Es gibt keine RÜckgabe, wenn ein Objekt aus dem Stapel entfernt wird.
-        if(isEmpty()) return;
-        if(!isEmpty()){
+        if (isEmpty()) return;
+        if (!isEmpty()) {
             this.head = head.getNext();
         }
-
-public ContentType top() {
-    if (isEmpty()) {
-        return null;
     }
-    return head.getContent();
-}
 
     /**
      * Die Anfrage liefert das oberste Stapelobjekt. Der Stapel bleibt
@@ -134,6 +128,7 @@ public ContentType top() {
      */
     public ContentType top() {
         //TODO 07: Implementiere die Methode top(). Achtung! Der Stapel bleibt dabei unverändert!
+        if (isEmpty()) return null;
         return head.getContent();
-    }
+        }
 }
